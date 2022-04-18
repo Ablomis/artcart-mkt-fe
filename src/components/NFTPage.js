@@ -1,12 +1,18 @@
 import React, {useState, useEffect} from 'react';
 import NFTCard from "./NFTCard";
 import Grid from '@mui/material/Grid';
-import Item from '@mui/material/Item';
 import axios from 'axios';
 
 const NFTPage = () => {
     const [loadingData, setLoadingData] = useState(true);
     const [nftData, setNFTData] = useState(null);
+
+    const Item = styled(Paper)(({ theme }) => ({
+        ...theme.typography.body2,
+        padding: theme.spacing(1),
+        textAlign: 'center',
+        color: theme.palette.text.secondary,
+      }));
   
     useEffect(() => {
         const url = "https://artcart-mkt.netlify.app/.netlify/functions/get-nfts";
