@@ -10,11 +10,12 @@ const NFTPage = () => {
   
     useEffect(() => {
         const url = "https://artcart-mkt.netlify.app/.netlify/functions/get-nfts";
-        fetch(url).then(res => res.json()).then(json => {
-            setNFTData(json);
+        axios.get(url).then(result => {
+            setNFTData(result.data);
             setLoadingData(false);
+            console.log(result.data);
         })
-      },[]);
+    },[]);
 
     const mapStructure = (node) => {
       if (node) {
