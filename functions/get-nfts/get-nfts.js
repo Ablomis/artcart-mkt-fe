@@ -10,11 +10,12 @@ exports.handler = async (event, context, callback) => {
     client_secret: process.env.client_secret,
     audience: 'platform.artcart.app/api/transactional/'
   });
+  console.log(responseToken.data)
   const token = responseToken.data.access_token;
 
   const responseNFT = await axios.get(`https://platform.artcart.cloud/api/transactional/nft`, 
   { headers: { "Authorization": `Bearer ${token}` } });
-
+  console.log(responseNFT.data)
   return { 
     statusCode: 200,
     body: responseNFT.data
