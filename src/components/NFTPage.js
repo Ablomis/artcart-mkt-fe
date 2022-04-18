@@ -6,11 +6,13 @@ import axios from 'axios';
 
 const NFTPage = () => {
     const [loadingData, setLoadingData] = useState(true);
+    const [nftData, setNFTData] = useState(null);
   
     useEffect(() => {
-        const meta_url = process.env.GATSBY_IPFS_GATEWAY+cardData.meta_ipfshash;
-        fetch(meta_url).then(res => res.json()).then(json => {
-          setMetadata(json);
+        const url = "";
+        fetch(url).then(res => res.json()).then(json => {
+            setNFTData(json);
+            setLoadingData(false);
         })
       },[]);
 
