@@ -45,7 +45,7 @@ const NFTPage = () => {
   
     return (
       <div>
-          {nftData};
+          {JSON. stringify(nftData)};
       </div>
     );
   
