@@ -16,6 +16,6 @@ exports.handler = async (event, context, callback) => {
   console.log(responseNFT.data)
   return { 
     statusCode: 200,
-    body: responseNFT.data
+    body: JSON.stringify(responseNFT.data)
   }
 };
