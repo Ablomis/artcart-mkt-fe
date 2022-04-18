@@ -20,7 +20,7 @@ const NFTPage = () => {
       if (node) {
           return node.map(node => (
             <ListItem key={node._id}>
-              <NftCard image_url={process.env.GATSBY_IPFS_GATEWAY+node.image_ipfshash}
+              <NFTCard image_url={process.env.GATSBY_IPFS_GATEWAY+node.image_ipfshash}
                 id={node._id}
                 name={node.name}
                 author_wallet={node.author_wallet}
