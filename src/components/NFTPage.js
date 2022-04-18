@@ -44,9 +44,7 @@ const NFTPage = () => {
   
     return (
       <div>
-            <List sx={{ width: '100%', bgcolor: 'background.paper' }}>     
-              {mapStructure(JSON.parse(JSON.stringify(nftData, null, 2)))}
-            </List>
+          {nftData};
       </div>
     );
   
