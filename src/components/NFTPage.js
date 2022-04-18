@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import NFTCard from "./NFTCard";
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
+import Grid from '@mui/material/Grid';
+import Item from '@mui/material/Item';
 import axios from 'axios';
 
 const NFTPage = () => {
@@ -20,7 +20,7 @@ const NFTPage = () => {
     const mapStructure = (node) => {
       if (node) {
           return node.map(node => (
-            <ListItem key={node._id}>
+            <Item key={node._id}>
               <NFTCard image_url={process.env.GATSBY_IPFS_GATEWAY+node.image_ipfshash}
                 id={node._id}
                 name={node.name}
@@ -32,7 +32,7 @@ const NFTPage = () => {
                 status={node.status}
                 network={node.network}
               />
-            </ListItem>
+            </Item>
           ));
       }
     };
@@ -45,9 +45,11 @@ const NFTPage = () => {
   
     return (
       <div>
-        <List sx={{ width: '100%', bgcolor: 'background.paper' }}>     
+        <Grid container spacing={2}>
+        <Grid item xs={4}>
             {mapStructure(JSON.parse(JSON.stringify(nftData, null, 2)))}
-        </List>
+        </Grid>
+      </Grid>
       </div>
     );
   
