@@ -9,7 +9,7 @@ const NFTPage = () => {
     const [nftData, setNFTData] = useState(null);
   
     useEffect(() => {
-        const url = "";
+        const url = "https://artcart-mkt.netlify.app/.netlify/functions/get-nfts";
         fetch(url).then(res => res.json()).then(json => {
             setNFTData(json);
             setLoadingData(false);
