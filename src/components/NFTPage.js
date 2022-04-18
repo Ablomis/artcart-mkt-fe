@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import NftCard from "./NftCard";
+import NFTCard from "./NFTCard";
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import axios from 'axios';

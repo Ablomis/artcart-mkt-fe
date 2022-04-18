@@ -7,10 +7,6 @@ import Box from '@mui/material/Box';
 import { Button, CardActionArea, CardActions } from '@mui/material';
 
 const NFTCard = ({image_url, id, name, author_wallet, meta_ipfshash, nftAddress, nftID, rarible_url, status, network}) => {
-    const [sellModalOpen, setSellModalOpen] = useState(false);
-    const [mintModalOpen, setMintModalOpen] = useState(false);
-    const [activeStep, setActiveStep] = useState(0);
-    const [cardState, setCardState] = useState(status);
     const [metaData, setMetadata] = useState({});
     const [cardData, setCardData] = useState({
       imageUrl: image_url,
