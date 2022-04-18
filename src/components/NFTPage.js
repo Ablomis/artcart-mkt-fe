@@ -1,6 +1,8 @@
 import React, {useState, useEffect} from 'react';
 import NFTCard from "./NFTCard";
 import Grid from '@mui/material/Grid';
+import { styled } from '@mui/material/styles';
+import Paper from '@mui/material/Paper';
 import axios from 'axios';
 
 const NFTPage = () => {
