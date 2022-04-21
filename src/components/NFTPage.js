@@ -28,6 +28,7 @@ const NFTPage = () => {
     const mapStructure = (node) => {
       if (node) {
           return node.map(node => (
+            <Grid item xs={4}>
             <Item key={node._id}>
               <NFTCard image_url={process.env.GATSBY_IPFS_GATEWAY+node.image_ipfshash}
                 id={node._id}
@@ -41,6 +42,7 @@ const NFTPage = () => {
                 network={node.network}
               />
             </Item>
+            </Grid>
           ));
       }
     };
@@ -55,7 +57,7 @@ const NFTPage = () => {
         <Box sx={{ flexGrow: 1 }}>
             <Grid container spacing={2} item xs={4}>
                 {mapStructure(JSON.parse(JSON.stringify(nftData, null, 2)))}
-        </Grid>
+            </Grid>
       </Box>
     );
   
