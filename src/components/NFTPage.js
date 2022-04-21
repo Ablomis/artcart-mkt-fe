@@ -52,11 +52,11 @@ const NFTPage = () => {
     }
   
     return (
-      <div>
-        <Grid container spacing={2} item xs={4}>
-            {mapStructure(JSON.parse(JSON.stringify(nftData, null, 2)))}
-      </Grid>
-      </div>
+        <Box sx={{ flexGrow: 1 }}>
+            <Grid container spacing={2} item xs={4}>
+                {mapStructure(JSON.parse(JSON.stringify(nftData, null, 2)))}
+        </Grid>
+      </Box>
     );
   
   }
