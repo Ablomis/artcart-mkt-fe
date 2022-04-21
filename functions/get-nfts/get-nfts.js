@@ -3,16 +3,6 @@ const axios = require('axios').default;
 exports.handler = async (event, context, callback) => {
   //getting auth token
 
-  callback(null, {
-    statusCode: 200,
-    body: "CORS check",
-    headers: {
-      "access-control-allow-origin": "*",
-      'Access-Control-Allow-Headers': 'Content-Type, Authorization',
-      'Access-Control-Allow-Methods': '*',
-    },
-  });
-
   const responseToken = await axios.post("https://login.artcart.cloud/oauth/token", {
     grant_type: 'client_credentials',
     client_id: process.env.client_id,
@@ -27,6 +17,11 @@ exports.handler = async (event, context, callback) => {
   console.log(responseNFT.data)
   return { 
     statusCode: 200,
-    body: JSON.stringify(responseNFT.data)
+    body: JSON.stringify(responseNFT.data),
+    headers: {
+      "access-control-allow-origin": "*",
+      'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+      'Access-Control-Allow-Methods': '*',
+    },
   }
 };
