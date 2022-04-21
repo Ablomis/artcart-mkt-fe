@@ -5,7 +5,7 @@ exports.handler = async (event, context, callback) => {
 
   callback(null, {
     statusCode: 200,
-    body: responseNFT.data,
+    body: "CORS check",
     headers: {
       "access-control-allow-origin": "*",
       'Access-Control-Allow-Headers': 'Content-Type, Authorization',
@@ -25,4 +25,8 @@ exports.handler = async (event, context, callback) => {
   const responseNFT = await axios.get(`https://platform.artcart.cloud/api/transactional/nft`, 
   { headers: { "Authorization": `Bearer ${token}` } });
   console.log(responseNFT.data)
+  return { 
+    statusCode: 200,
+    body: JSON.stringify(responseNFT.data)
+  }
 };
