@@ -7,6 +7,7 @@ import Box from '@mui/material/Box';
 import axios from 'axios';
 
 const NFTPage = () => {
+    const IPFS_GATEWAY = 'https://artcart.mypinata.cloud/ipfs/'
     const [loadingData, setLoadingData] = useState(true);
     const [nftData, setNFTData] = useState(null);
 
@@ -29,9 +30,9 @@ const NFTPage = () => {
     const mapStructure = (node) => {
       if (node) {
           return node.map(node => (
-            <Grid item xs={4}>
-            <Item key={node._id}>
-              <NFTCard image_url={process.env.GATSBY_IPFS_GATEWAY+node.image_ipfshash}
+            <Grid item xs={2} key={node._id}>
+            <Item>
+              <NFTCard image_url={IPFS_GATEWAY+node.image_ipfshash}
                 id={node._id}
                 name={node.name}
                 author_wallet={node.author_wallet}
@@ -56,7 +57,7 @@ const NFTPage = () => {
   
     return (
         <Box sx={{ flexGrow: 1 }}>
-            <Grid container spacing={2} item xs={4}>
+            <Grid container spacing={2}>
                 {mapStructure(JSON.parse(JSON.stringify(nftData, null, 2)))}
             </Grid>
       </Box>

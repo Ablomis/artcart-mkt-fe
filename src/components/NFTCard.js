@@ -7,6 +7,7 @@ import Box from '@mui/material/Box';
 import { Button, CardActionArea, CardActions } from '@mui/material';
 
 const NFTCard = ({image_url, id, name, author_wallet, meta_ipfshash, nftAddress, nftID, rarible_url, status, network}) => {
+    const IPFS_GATEWAY = 'https://artcart.mypinata.cloud/ipfs/'
     const [metaData, setMetadata] = useState({});
     const [cardData, setCardData] = useState({
       imageUrl: image_url,
@@ -20,10 +21,18 @@ const NFTCard = ({image_url, id, name, author_wallet, meta_ipfshash, nftAddress,
       network: network,
       rarible_url: rarible_url
     });
+
+    useEffect(() => {
+        fetch(IPFS_GATEWAY+cardData.meta_ipfshash).then( resp => resp.json())
+        .then((data)=> {
+            setMetadata(data);
+            console.log(data)
+        })
+    },[cardData]);
   
     return (
-      <Card sx={{ width: '100%', display: 'flex', flexDirection: {xs: 'column', md: 'row'}}}>
-        <Box sx={{ display: 'flex', maxHeight: {xs: '500px', md: '140px'}, maxWidth: {xs: '500px', md: '140px'} }}>
+      <Card>
+        <Box sx={{ display: 'flex', maxHeight: {xs: '512px', md: '512x'}, maxWidth: {xs: '512px', md: '512px'} }}>
           <CardActionArea>
             <CardMedia
               component="img"
@@ -32,21 +41,12 @@ const NFTCard = ({image_url, id, name, author_wallet, meta_ipfshash, nftAddress,
             />
             </CardActionArea>
           </Box>
-          <Box sx={{ display: 'flex', flexGrow: 4}}>
-            <CardContent sx={{ flex: '1 0 auto' }}>
-            {metaData !== null && <Typography gutterBottom variant="h5" component="div">{metaData.name}</Typography>}
-              <Typography variant="body2" color="text.secondary">
-                Contract Address: {cardData.nftAddress}
-              </Typography>
-              <Typography variant="body2" color="text.secondary">
-                NFT id: {cardData.nftID}
-              </Typography>
-              <Typography variant="subtitle1" color="text.secondary" component="div">
-                {cardData.status + ' ' + cardData.network}
-              </Typography>
+            <CardContent>
+            {metaData !== null && <Typography gutterBottom variant="h5" align="left">{metaData.name}</Typography>}
+              <Typography variant="body2" color="text.secondary" align="left">{cardData.status + ' ' + cardData.network}</Typography>
             </CardContent>
-        </Box>
         <CardActions sx={{ display: 'flex', flexDirection: 'column',  justifyContent: "space-evenly"}}>
+            <Button size="small">BUY</Button>
         </CardActions>
       </Card>
     );
